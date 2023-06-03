@@ -1,8 +1,15 @@
 import Link from 'next/link';
+import { prisma } from '../db';
 
 async function createTodo(data: FormData) {
   'use server';
   console.log('hi');
+
+  const title = data.get('title')?.valueOf();
+
+  if (typeof title !== 'string' || title.length === 0) return;
+
+  await prisma.todo.create({ data: { title, completed: false } });
 }
 
 export default function Page() {
