@@ -1,10 +1,17 @@
 import { getTodos } from '@/utils/getTodos';
 import { TodoItem } from '@/components/TodoItem';
 import Link from 'next/link';
+import { prisma } from './db';
+
+async function toggleTodo(id: string, complete: boolean) {
+  'use server';
+
+  console.log(id, complete);
+}
 
 export default async function Home() {
   const todos = await getTodos();
-  // await prisma.todo.create({ data: { title: 'test', completed: false } });
+  // await prisma.todo.create({ data: { title: 'test', complete: false } });
   // await prisma.todo.deleteMany();
 
   return (
@@ -20,7 +27,7 @@ export default async function Home() {
       </header>
       <ul className='pl-4'>
         {todos.map((todo) => (
-          <TodoItem {...todo} />
+          <TodoItem {...todo} toggleTodo={toggleTodo} />
         ))}
       </ul>
     </>

@@ -4,13 +4,12 @@ import { redirect } from 'next/navigation';
 
 async function createTodo(data: FormData) {
   'use server';
-  console.log('hi');
 
   const title = data.get('title')?.valueOf();
 
   if (typeof title !== 'string' || title.length === 0) return;
 
-  await prisma.todo.create({ data: { title, completed: false } });
+  await prisma.todo.create({ data: { title, complete: false } });
 
   redirect('/');
 }
