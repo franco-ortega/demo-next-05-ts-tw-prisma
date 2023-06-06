@@ -1,7 +1,9 @@
 import { getTodos } from '@/utils/getTodos';
 import { TodoItem } from '@/components/TodoItem';
-import Link from 'next/link';
 import { prisma } from './db';
+import Link from 'next/link';
+import DeleteTodos from '@/components/buttons/DeleteTodos';
+// import { deleteTodos } from '@/utils/deleteTodos';
 
 async function toggleTodo(id: string, complete: boolean) {
   'use server';
@@ -11,21 +13,27 @@ async function toggleTodo(id: string, complete: boolean) {
   await prisma.todo.update({ where: { id }, data: { complete } });
 }
 
+// async function deleteTodos() {
+//   'use server';
+//   await prisma.todo.deleteMany();
+// }
+
 export default async function Home() {
   const todos = await getTodos();
-  // await prisma.todo.create({ data: { title: 'test', complete: false } });
-  // await prisma.todo.deleteMany();
 
   return (
     <>
       <header className='flex justify-between items-center mb-4'>
         <h1 className='text-2xl'>Todos</h1>
-        <Link
-          href='/new'
-          className='border border-slate-300 text-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none'
-        >
-          New Todo
-        </Link>
+        <div className='flex gap-2'>
+          <Link
+            href='/new'
+            className='border border-slate-300 text-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none'
+          >
+            New Todo
+          </Link>
+          {/* <DeleteTodos deleteTodos={deleteTodos} /> */}
+        </div>
       </header>
       <ul className='pl-4'>
         {todos.map((todo) => (
