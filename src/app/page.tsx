@@ -1,11 +1,7 @@
-// import { getTodos } from '@/utils/getTodos';
+import { getTodos } from '@/utils/getTodos';
 import { TodoItem } from '@/components/TodoItem';
 import Link from 'next/link';
 import { prisma } from './db';
-
-function getTodos() {
-  return prisma.todo.findMany();
-}
 
 async function toggleTodo(id: string, complete: boolean) {
   'use server';
