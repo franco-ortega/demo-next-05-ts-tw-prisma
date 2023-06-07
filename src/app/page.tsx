@@ -1,16 +1,8 @@
 import Link from 'next/link';
-import { prisma } from './db';
 import { getTodos } from '@/utils/getTodos';
 import { TodoItem } from '@/components/TodoItem';
+import { toggleTodo } from '@/utils/toggleTodo';
 import { deleteTodo } from '@/utils/deleteTodo';
-
-async function toggleTodo(id: string, complete: boolean) {
-  'use server';
-
-  console.log(id, complete);
-
-  await prisma.todo.update({ where: { id }, data: { complete } });
-}
 
 export default async function Home() {
   const todos = await getTodos();
