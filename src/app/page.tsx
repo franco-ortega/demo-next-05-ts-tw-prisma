@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { prisma } from './db';
 import { getTodos } from '@/utils/getTodos';
 import { TodoItem } from '@/components/TodoItem';
+import { deleteTodo } from '@/utils/deleteTodo';
 
 async function toggleTodo(id: string, complete: boolean) {
   'use server';
@@ -9,11 +10,6 @@ async function toggleTodo(id: string, complete: boolean) {
   console.log(id, complete);
 
   await prisma.todo.update({ where: { id }, data: { complete } });
-}
-
-async function deleteTodo(id: string) {
-  'use server';
-  await prisma.todo.delete({ where: { id } });
 }
 
 export default async function Home() {
