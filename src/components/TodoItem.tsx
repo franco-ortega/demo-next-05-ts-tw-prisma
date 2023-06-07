@@ -1,5 +1,7 @@
 'use client';
 
+import DeleteTodo from './buttons/DeleteTodo';
+
 type TodoItemProps = {
   id: string;
   title: string;
@@ -15,10 +17,6 @@ export function TodoItem({
   toggleTodo,
   deleteTodo,
 }: TodoItemProps) {
-  function onDeleteClick() {
-    deleteTodo(id);
-  }
-
   return (
     <li className='flex gap-1 items-center'>
       <input
@@ -35,12 +33,7 @@ export function TodoItem({
         {title}
       </label>
 
-      <button
-        onClick={onDeleteClick}
-        className='border border-slate-300 text-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none'
-      >
-        Remove
-      </button>
+      <DeleteTodo id={id} deleteTodo={deleteTodo} />
     </li>
   );
 }

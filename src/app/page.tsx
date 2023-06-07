@@ -1,9 +1,7 @@
+import Link from 'next/link';
+import { prisma } from './db';
 import { getTodos } from '@/utils/getTodos';
 import { TodoItem } from '@/components/TodoItem';
-import { prisma } from './db';
-import Link from 'next/link';
-import DeleteTodos from '@/components/buttons/DeleteTodos';
-// import { deleteTodos } from '@/utils/deleteTodos';
 
 async function toggleTodo(id: string, complete: boolean) {
   'use server';
