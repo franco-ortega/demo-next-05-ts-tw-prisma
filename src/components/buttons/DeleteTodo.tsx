@@ -13,9 +13,9 @@ export default function DeleteTodo({ id, deleteTodo }: DeleteTodoProps) {
   return (
     <button
       onClick={onDeleteClick}
-      className='border border-slate-300 text-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none'
+      className=' text-slate-900 px-2 py-0 rounded bg-red-400 hover:bg-red-600 focus-within:bg-red-600 outline-none text-xs w-fit m-auto'
     >
-      Delete Todo
+      Delete
     </button>
   );
 }
