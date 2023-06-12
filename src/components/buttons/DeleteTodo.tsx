@@ -11,11 +11,13 @@ export default function DeleteTodo({ id, deleteTodo }: DeleteTodoProps) {
   }
 
   return (
-    <button
-      onClick={onDeleteClick}
-      className=' text-slate-900 px-2 py-0 rounded bg-red-400 hover:bg-red-600 focus-within:bg-red-600 outline-none text-xs w-fit m-auto'
-    >
+    <button onClick={onDeleteClick} className={styles.button}>
       Delete
     </button>
   );
 }
+
+const styles = {
+  button:
+    'text-slate-900 px-2 py-0 rounded bg-red-400 hover:bg-red-600 focus-within:bg-red-600 outline-none text-xs w-fit m-auto',
+};
