@@ -18,7 +18,7 @@ export function TodoItem({
   deleteTodo,
 }: TodoItemProps) {
   return (
-    <li className='grid grid-cols-[25px_auto_75px] items-center border rounded p-1'>
+    <li className={styles.li}>
       <input
         id={id}
         type='checkbox'
@@ -26,13 +26,16 @@ export function TodoItem({
         defaultChecked={complete}
         onChange={(e) => toggleTodo(id, e.target.checked)}
       />
-      <label
-        htmlFor={id}
-        className='cursor-pointer peer-checked:line-through peer-checked:text-slate-500 text-lg'
-      >
+      <label htmlFor={id} className={styles.label}>
         {title}
       </label>
       <DeleteTodo id={id} deleteTodo={deleteTodo} />
     </li>
   );
 }
+
+const styles = {
+  li: 'grid grid-cols-[25px_auto_75px] items-center border rounded p-1',
+  label:
+    'cursor-pointer peer-checked:line-through peer-checked:text-slate-500 text-lg',
+};
