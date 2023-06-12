@@ -1,4 +1,4 @@
-import { TodoItem } from './TodoItem';
+import TodoItem from './TodoItem';
 import { toggleTodo } from '@/utils/toggleTodo';
 import { deleteTodo } from '@/utils/deleteTodo';
 
