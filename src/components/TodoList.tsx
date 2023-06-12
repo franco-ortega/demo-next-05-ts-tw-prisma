@@ -8,7 +8,7 @@ type TodoListProps = {
 
 export default function TodoList({ todos }: TodoListProps) {
   return (
-    <ul className='pl-4 flex flex-col gap-3 bg-slate-900 p-2 rounded'>
+    <ul className={styles.ul}>
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
@@ -20,3 +20,7 @@ export default function TodoList({ todos }: TodoListProps) {
     </ul>
   );
 }
+
+const styles = {
+  ul: 'pl-4 flex flex-col gap-3 bg-slate-900 p-2 rounded',
+};
